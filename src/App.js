@@ -1,17 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Detail } from "./pages/Detail";
+import { useRef } from "react";
 
 function App() {
+ const inputRef = useRef(0)
  
+ 
+
+ const focusFuc = () =>{
+    inputRef.current.focus()
+ }
+
   return (
     <>
-       <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/detail/:id" element={<Detail/>}/>
-        </Routes>
-      </BrowserRouter>
+    <input type="text" ref={inputRef}></input>
+    <button onClick={focusFuc}>
+       focus
+    </button>
     </>
   );
 }
