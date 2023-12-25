@@ -5,17 +5,26 @@ import { Text } from './components/Text';
 
 
 function App() {
-  const [count, setcount] = useState(0)
-  const plus = () => {
-    setcount(count+1)
-  }
+  const [name, setname] = useState()
 
+  const [data, setdata] = useState([])
+  const clickFunc = ()=> {
+    setdata(prev => ([...prev,name]))
+  }
+  
   return (
     <>
-    <Button name={"azalt"} onClick={() => setcount(count-1)}/>
-      <button onClick={() => setcount(count-1)}>Azalt</button>
-      <div>{count}</div>
-      <button onClick={plus}>Artır</button>
+      <input type='text' onChange={ (e) =>setname(e.target.value)}></input> 
+      <button onClick={clickFunc}>Ekle</button>
+      <div>{name}</div>   
+      <br/>
+      <div>{
+          data.map((dt,index) => (
+              <div key={index}>
+                  {dt}
+              </div>
+          ))
+        }</div>
     </>
   );
 }
